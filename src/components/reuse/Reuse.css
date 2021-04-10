@@ -1,0 +1,9 @@
+/* ======================formbutton======================================= */
+
+.formbutton {
+  text-align: center;
+  font-size: 50px;
+}
+.formbutton > button {
+  font-size: 1.5rem;
+}

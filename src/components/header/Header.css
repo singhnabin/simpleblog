@@ -1,0 +1,29 @@
+.header {
+  border-bottom: 1px solid whitesmoke;
+  box-shadow: 0px 5px 7px 0px rgba(190, 13, 13, 0.24);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background-color: #fff;
+}
+.navbar-nav {
+  margin-left: auto;
+  align-items: center;
+}
+.navbar-nav > a {
+  min-width: fit-content;
+  padding: 0.5rem 1rem;
+  font-size: 18px;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  cursor: pointer;
+  color: #fff !important;
+  align-items: center;
+  font-weight: 600;
+}
+.navbar-nav:hover > a:hover {
+  border-radius: 5px;
+  color: #000 !important;
+  background-color: #cfcfcf;
+}

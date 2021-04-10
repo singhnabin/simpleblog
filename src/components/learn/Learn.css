@@ -1,0 +1,38 @@
+.learn {
+  padding: 50px;
+  
+  /* height: 100%; */
+}
+.learn__blogs {
+  padding: 20px;
+  text-align: center;
+  text-decoration: underline;
+  text-transform: uppercase;
+}
+.learn__card {
+  margin-bottom: 50px;
+  box-shadow: 5px 5px 7px 7px rgba(0, 0, 0, 0.24);
+}
+.learn__card__header {
+  font-size: 30px;
+}
+.learn__carddetails {
+  /* display: flex;
+  /* align-items: center; */
+  /* flex-wrap: wrap; */
+  /* justify-content: space-between; */
+}
+.card-img {
+  height: 350px !important;
+  max-width: 100% !important;
+  margin-top: 10px;
+  border-radius: 10px !important;
+}
+.learn__card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.learn__card__text {
+  margin-top: 10px;
+}
