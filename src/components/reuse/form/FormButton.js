@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "react-bootstrap";
-import "../Reuse.css";
+import "../Style.css";
 function FormButton({ isSubmitting, errors, variant, text }) {
   return (
     <div className="formbutton">

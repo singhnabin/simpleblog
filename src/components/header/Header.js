@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import "./Header.css";
-import { Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { Badge, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { Avatar } from "@material-ui/core";
 import CardGiftcardIcon from "@material-ui/icons/CardGiftcard";
 import AccountBalanceWalletIcon from "@material-ui/icons/AccountBalanceWallet";
@@ -13,10 +13,20 @@ import InsertDriveFileIcon from "@material-ui/icons/InsertDriveFile";
 import HelpIcon from "@material-ui/icons/Help";
 import ChatIcon from "@material-ui/icons/Chat";
 import DescriptionIcon from "@material-ui/icons/Description";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
+import { isAuthenticated } from "../../api";
+import { signout } from "../../api/user";
 
-function Header() {
-  const isloggedIn = false;
+const currentTab = (history, path) => {
+  if (history.location.pathname === path) {
+    return { color: "#2ecc72" };
+  } else {
+    return { color: "#ffffff" };
+  }
+};
+
+function Header({ history }) {
+  const { user } = isAuthenticated();
   const account = [
     { Icon: CardGiftcardIcon, text: "Free Stocks", href: "/" },
     { Icon: AccountBalanceWalletIcon, text: "Account", href: "/" },
@@ -47,11 +57,49 @@ function Header() {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav>
             <Fragment>
-              <Link to="/auth/login">Login</Link>
-              <Link to="/auth/signin">Sign Up</Link>
+              {!user && (
+                <Link to="/login" style={currentTab(history, "/cart")}>
+                  Login
+                </Link>
+              )}
+
+              {/* <Link to="/auth/signin">Sign Up</Link> */}
             </Fragment>
-            {isloggedIn && (
-              <Avatar src="https://scontent-dfw5-1.xx.fbcdn.net/v/t1.0-9/69841538_3064012920307642_7407430817242152960_n.jpg?_nc_cat=111&ccb=3&_nc_sid=174925&_nc_ohc=_brErnEUkf0AX_ZwTwz&_nc_ht=scontent-dfw5-1.xx&oh=621c6dc001c4fca43775447b210cc24b&oe=6065DD93" />
+
+            {user && (
+              <Fragment>
+                <Link
+                  to="/user/dashboard"
+                  style={currentTab(history, "/user/dashboard")}
+                >
+                  Dashboard
+                </Link>
+                {user.role === 1 && (
+                  <Link
+                    to="/admin/dashboard"
+                    style={currentTab(history, "/admin/dashboard")}
+                  >
+                    Admin Dashboard
+                  </Link>
+                )}
+
+                <Badge variant="dark" className="profile__badge">
+                  {user.firstName}
+                </Badge>
+
+                <NavDropdown title="Profile" id="collasible-nav-dropdown">
+                  <NavDropdown.Item
+                    style={currentTab(history, "/admin/dashboard")}
+                    onClick={() => {
+                      signout(() => history.push("/"));
+                    }}
+                  >
+                    Logout
+                  </NavDropdown.Item>
+                </NavDropdown>
+
+                <Avatar src="https://scontent-dfw5-2.xx.fbcdn.net/v/t1.6435-9/86257998_2014992985312926_4094412634177142784_n.jpg?_nc_cat=106&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=W0G0r12feyUAX-dnIkS&_nc_ht=scontent-dfw5-2.xx&oh=57e772185d0a4f45cbc027dbfb2f338b&oe=609350FE" />
+              </Fragment>
             )}
           </Nav>
         </Navbar.Collapse>
@@ -60,4 +108,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default withRouter(Header);

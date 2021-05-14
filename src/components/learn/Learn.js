@@ -1,7 +1,6 @@
-
 import React from "react";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
-import { loream } from "../../../json";
+// import { loream } from "../../../json";
 import "./Learn.css";
 
 function Learn() {
@@ -36,7 +35,7 @@ function Learn() {
                       <Row>
                         <Col xm={12} sm={12} md={12} lg={6} xl={8}>
                           <div className="learn__card__text">
-                            <p>{truncate(loream, 800)}</p>
+                            <p>{truncate("", 800)}</p>
                             <Button variant="outline-info">Read More</Button>
                           </div>
                         </Col>

@@ -27,3 +27,6 @@
   color: #000 !important;
   background-color: #cfcfcf;
 }
+.profile__badge {
+  font-size: 110% !important;
+}

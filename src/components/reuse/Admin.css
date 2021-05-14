@@ -1,0 +1,23 @@
+.content {
+  display: flex;
+  height: 100vh;
+}
+.sidebar {
+  border-right: 1px solid rgb(130, 130, 231);
+  background-color: #343a40;
+  flex: 0.1;
+  max-width: 20%;
+}
+.child {
+  flex: 0.9;
+  right: 0;
+  overflow-y: scroll;
+}
+.child::-webkit-scrollbar {
+  display: none;
+}
+@media (max-width: 768px) {
+  .child {
+    flex: 1;
+  }
+}

@@ -1,0 +1,24 @@
+.sideoption {
+  display: flex;
+  padding: 25px;
+  align-items: center;
+  cursor: pointer;
+  color: #fff;
+  font-size: 20px;
+  height: fit-content;
+}
+.link-item {
+  margin-left: 5px;
+  color: #fff;
+}
+.sideoption:hover,
+.sideoption:hover .link-item {
+  background-color: #e8f5fe;
+  color: black;
+  transition: color 100ms ease-out;
+}
+
+.link-item:hover {
+  text-decoration: none;
+  color: #000;
+}
